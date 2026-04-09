@@ -1,0 +1,109 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+  background: #f5f7fa;
+  color: #333;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+header {
+  background: linear-gradient(135deg, #4a90d9, #67b8de);
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+header h1 { font-size: 1.6rem; }
+header p { font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.9; }
+.container { max-width: 880px; margin: 2rem auto; padding: 0 1rem; }
+
+/* カード */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-bottom: 2rem;
+  overflow: hidden;
+}
+.card-header { padding: 1rem 1.5rem; font-weight: bold; font-size: 1.1rem; color: #fff; }
+.card-header.blue { background: #4a90d9; }
+.card-header.green { background: #5cb85c; }
+.card-header.orange { background: #f0ad4e; }
+.card-header.red { background: #d9534f; }
+.card-header.purple { background: #8e6cb8; }
+.card-body { padding: 1.5rem; }
+
+/* テーブル */
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { border: 1px solid #ddd; padding: 0.6rem 0.8rem; text-align: left; vertical-align: top; }
+th { background: #f0f4f8; font-weight: bold; white-space: nowrap; }
+tr:nth-child(even) { background: #fafbfc; }
+
+/* お知らせ */
+.notice {
+  background: #fff3cd; border-left: 4px solid #f0ad4e;
+  padding: 1rem 1.2rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-size: 0.9rem;
+}
+.notice-red { background: #f8d7da; border-left-color: #d9534f; }
+.notice-blue { background: #d1ecf1; border-left-color: #4a90d9; }
+.notice strong { display: block; margin-bottom: 0.3rem; }
+
+/* リスト */
+ul { padding-left: 1.5rem; }
+ul li { margin-bottom: 0.3rem; }
+
+/* チェックリスト */
+.checklist { list-style: none; padding-left: 0; }
+.checklist li { margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem; }
+.checklist input[type="checkbox"] {
+  margin-top: 0.35rem; width: 18px; height: 18px; accent-color: #4a90d9;
+  cursor: pointer; flex-shrink: 0;
+}
+.checklist label { cursor: pointer; flex: 1; }
+.checklist input[type="checkbox"]:checked + label {
+  text-decoration: line-through; color: #aaa;
+}
+
+.school-keep { color: #888; font-size: 0.85em; }
+
+/* 戻るリンク */
+.back-link {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  color: #4a90d9; text-decoration: none; font-size: 0.95rem;
+  padding: 0.5rem 0; font-weight: bold;
+}
+.back-link:hover { text-decoration: underline; }
+
+/* トップページ メニューカード */
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin-top: 1rem;
+}
+.menu-card {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+  padding: 2rem 1.5rem;
+  text-decoration: none; color: #333;
+  transition: transform 0.15s, box-shadow 0.15s;
+  min-height: 180px;
+}
+.menu-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+.menu-card:active { transform: translateY(0); }
+.menu-icon { font-size: 3rem; margin-bottom: 0.8rem; }
+.menu-title { font-size: 1.15rem; font-weight: bold; text-align: center; }
+.menu-desc { font-size: 0.8rem; color: #777; margin-top: 0.4rem; text-align: center; }
+
+footer { text-align: center; padding: 2rem; color: #999; font-size: 0.8rem; }
+
+@media (max-width: 600px) {
+  .menu-grid { grid-template-columns: 1fr; }
+  .menu-card { min-height: 140px; padding: 1.5rem 1rem; }
+  table { font-size: 0.8rem; }
+  th, td { padding: 0.4rem; }
+}
