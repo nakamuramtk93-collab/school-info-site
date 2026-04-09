@@ -5,12 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>学校連絡事項</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: url('bg.jpg') center top / cover no-repeat fixed;
+      min-height: 100vh;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: rgba(255,255,255,0.55);
+      z-index: 0;
+    }
+    header, .container, footer { position: relative; z-index: 1; }
+    header {
+      background: rgba(74,144,217,0.85);
+      backdrop-filter: blur(6px);
+    }
+    .menu-card {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(8px);
+    }
+    footer { color: #666; }
+  </style>
 </head>
 <body>
 
 <header>
   <h1>4月 学校連絡事項</h1>
-  <p>2026年4月9日 配布</p>
+  <p>2026年4月 佐古小学校 1年生</p>
 </header>
 
 <div class="container">
