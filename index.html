@@ -48,6 +48,16 @@
     .notice strong { display: block; margin-bottom: 0.3rem; }
     ul { padding-left: 1.5rem; }
     ul li { margin-bottom: 0.3rem; }
+    .checklist { list-style: none; padding-left: 0; }
+    .checklist li { margin-bottom: 0.5rem; display: flex; align-items: flex-start; gap: 0.5rem; }
+    .checklist input[type="checkbox"] {
+      margin-top: 0.35rem; width: 18px; height: 18px; accent-color: #4a90d9;
+      cursor: pointer; flex-shrink: 0;
+    }
+    .checklist label { cursor: pointer; flex: 1; }
+    .checklist input[type="checkbox"]:checked + label {
+      text-decoration: line-through; color: #aaa;
+    }
     .school-keep { color: #888; font-size: 0.85em; }
     footer { text-align: center; padding: 2rem; color: #999; font-size: 0.8rem; }
     @media (max-width: 600px) {
@@ -81,72 +91,71 @@
           <tr>
             <td>10日(金)<br><small>始業式<br>13:00下校</small></td>
             <td>
-              <ul>
-                <li>体育館シューズ</li>
-                <li>シューズ袋</li>
+              <ul class="checklist">
+                <li><input type="checkbox" id="p1"><label for="p1">体育館シューズ</label></li>
+                <li><input type="checkbox" id="p2"><label for="p2">シューズ袋</label></li>
               </ul>
             </td>
           </tr>
           <tr>
             <td>13日(月)</td>
             <td>
-              <ul>
-                <li>お道具箱（スティックのり・はさみ・クレパス・セロハンテープ・色鉛筆）<br>
-                  <small>※全てに記名してください</small></li>
+              <ul class="checklist">
+                <li><input type="checkbox" id="p3"><label for="p3">お道具箱（スティックのり・はさみ・クレパス・セロハンテープ・色鉛筆）<br><small>※全てに記名してください</small></label></li>
               </ul>
             </td>
           </tr>
           <tr>
             <td>14日(火)</td>
             <td>
-              <ul>
-                <li>たいそうふく（身体測定のため半袖・半ズボン）</li>
+              <ul class="checklist">
+                <li><input type="checkbox" id="p4"><label for="p4">たいそうふく（身体測定のため半袖・半ズボン）</label></li>
               </ul>
             </td>
           </tr>
           <tr>
             <td>15日(水)</td>
             <td>
-              <ul>
-                <li>さんすうボックス（ケースだけでなく、小さな物も一つ一つ記名）</li>
+              <ul class="checklist">
+                <li><input type="checkbox" id="p5"><label for="p5">さんすうボックス（ケースだけでなく、小さな物も一つ一つ記名）</label></li>
               </ul>
             </td>
           </tr>
           <tr>
             <td>17日(金)</td>
             <td>
-              <ul>
-                <li>マッキー 8色（1本ずつ記名）</li>
-                <li>ねんど・ねんどケース・ねんどばん（ねんどべら）</li>
+              <ul class="checklist">
+                <li><input type="checkbox" id="p6"><label for="p6">マッキー 8色（1本ずつ記名）</label></li>
+                <li><input type="checkbox" id="p7"><label for="p7">ねんど・ねんどケース・ねんどばん（ねんどべら）</label></li>
               </ul>
             </td>
           </tr>
           <tr>
             <td>23日(木)</td>
             <td>
-              <ul>
-                <li>ペットボトル 2本（ふたなし）</li>
-                <li>500ml の空のペットボトル（水やり用）</li>
-                <li>300ml（小さめ）の空のペットボトル（鉛筆削り用）</li>
+              <ul class="checklist">
+                <li><input type="checkbox" id="p8"><label for="p8">ペットボトル 2本（ふたなし）</label></li>
+                <li><input type="checkbox" id="p9"><label for="p9">500ml の空のペットボトル（水やり用）</label></li>
+                <li><input type="checkbox" id="p10"><label for="p10">300ml（小さめ）の空のペットボトル（鉛筆削り用）</label></li>
               </ul>
             </td>
           </tr>
           <tr>
             <td>24日(金)</td>
             <td>
-              <ul>
-                <li>ぞうきん（大きめに記名）</li>
+              <ul class="checklist">
+                <li><input type="checkbox" id="p11"><label for="p11">ぞうきん（大きめに記名）</label></li>
               </ul>
             </td>
           </tr>
           <tr>
             <td>27日(月)</td>
             <td>
-              <ul>
-                <li>給食用ランチマット（この週は、4日分を巾着袋に入れて持ってくる）</li>
-                <li>ランチマット入れ用 小さな巾着袋</li>
-                <li>歯みがきセット（歯ブラシ・コップ・歯磨き粉は自由。巾着袋に入れて）</li>
-                <li>歯みがきセット用 小さな巾着袋</li>
+              <ul class="checklist">
+                <li><input type="checkbox" id="p12"><label for="p12">給食用ランチマット（この週は、4日分を巾着袋に入れて持ってくる）</label></li>
+                <li><input type="checkbox" id="p13"><label for="p13">ランチマット入れ用 小さな巾着袋</label></li>
+                <li><input type="checkbox" id="p14"><label for="p14">歯みがきセット（歯ブラシ・コップ・歯磨き粉は自由。巾着袋に入れて）</label></li>
+                <li><input type="checkbox" id="p15"><label for="p15">歯みがきセット用 小さな巾着袋</label></li>
               </ul>
             </td>
           </tr>
@@ -154,14 +163,14 @@
       </table>
 
       <h4 style="margin-top:1.5rem;">提出物（10日(金)提出 ／ 13日(月)締切厳守）</h4>
-      <ul>
-        <li>児童調査票</li>
-        <li>PTA学級役員希望調査用紙</li>
-        <li>緊急連絡用引き渡しカード</li>
-        <li>保健調査票（押印またはサイン）</li>
-        <li>心電図調査票・記録表</li>
-        <li>学校生活管理指導表（希望者のみ）</li>
-        <li>スポーツ振興センター加入同意書</li>
+      <ul class="checklist">
+        <li><input type="checkbox" id="d1"><label for="d1">児童調査票</label></li>
+        <li><input type="checkbox" id="d2"><label for="d2">PTA学級役員希望調査用紙</label></li>
+        <li><input type="checkbox" id="d3"><label for="d3">緊急連絡用引き渡しカード</label></li>
+        <li><input type="checkbox" id="d4"><label for="d4">保健調査票（押印またはサイン）</label></li>
+        <li><input type="checkbox" id="d5"><label for="d5">心電図調査票・記録表</label></li>
+        <li><input type="checkbox" id="d6"><label for="d6">学校生活管理指導表（希望者のみ）</label></li>
+        <li><input type="checkbox" id="d7"><label for="d7">スポーツ振興センター加入同意書</label></li>
       </ul>
     </div>
   </div>
@@ -459,5 +468,13 @@
   &copy; 2026 学校連絡事項サイト
 </footer>
 
+<script>
+document.querySelectorAll('.checklist input[type="checkbox"]').forEach(cb => {
+  cb.checked = localStorage.getItem(cb.id) === '1';
+  cb.addEventListener('change', () => {
+    localStorage.setItem(cb.id, cb.checked ? '1' : '0');
+  });
+});
+</script>
 </body>
 </html>
