@@ -7,26 +7,41 @@
   <link rel="stylesheet" href="style.css">
   <style>
     body {
-      background: url('bg.jpg') center top / cover no-repeat fixed;
+      background: url('bg.jpg') center 30% / cover no-repeat fixed;
       min-height: 100vh;
     }
     body::before {
       content: '';
       position: fixed;
       inset: 0;
-      background: rgba(255,255,255,0.55);
+      background: rgba(255,255,255,0.3);
       z-index: 0;
     }
     header, .container, footer { position: relative; z-index: 1; }
     header {
-      background: rgba(74,144,217,0.85);
-      backdrop-filter: blur(6px);
+      background: rgba(74,144,217,0.8);
+      backdrop-filter: blur(4px);
+    }
+    .container { padding-top: 1rem; }
+    .menu-grid {
+      grid-template-columns: repeat(4, 1fr) !important;
+      gap: 0.8rem !important;
     }
     .menu-card {
-      background: rgba(255,255,255,0.92);
+      background: rgba(255,255,255,0.85);
       backdrop-filter: blur(8px);
+      min-height: 130px !important;
+      padding: 1.2rem 0.8rem !important;
     }
-    footer { color: #666; }
+    .menu-icon { font-size: 2.2rem !important; margin-bottom: 0.5rem !important; }
+    .menu-title { font-size: 0.95rem !important; }
+    .menu-desc { font-size: 0.7rem !important; }
+    footer { color: #555; }
+
+    @media (max-width: 600px) {
+      .menu-grid { grid-template-columns: repeat(2, 1fr) !important; }
+      body { background-position: center 20%; }
+    }
   </style>
 </head>
 <body>
