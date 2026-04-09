@@ -20,11 +20,7 @@
     }
     header h1 { font-size: 1.6rem; }
     header p { font-size: 0.9rem; margin-top: 0.5rem; opacity: 0.9; }
-    .container {
-      max-width: 860px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
+    .container { max-width: 880px; margin: 2rem auto; padding: 0 1rem; }
     .card {
       background: #fff;
       border-radius: 12px;
@@ -32,82 +28,28 @@
       margin-bottom: 2rem;
       overflow: hidden;
     }
-    .card-header {
-      padding: 1rem 1.5rem;
-      font-weight: bold;
-      font-size: 1.1rem;
-      color: #fff;
-    }
+    .card-header { padding: 1rem 1.5rem; font-weight: bold; font-size: 1.1rem; color: #fff; }
     .card-header.blue { background: #4a90d9; }
     .card-header.green { background: #5cb85c; }
     .card-header.orange { background: #f0ad4e; }
     .card-header.red { background: #d9534f; }
     .card-header.purple { background: #8e6cb8; }
     .card-body { padding: 1.5rem; }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.9rem;
-    }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 0.6rem 0.8rem;
-      text-align: left;
-      vertical-align: top;
-    }
-    th {
-      background: #f0f4f8;
-      font-weight: bold;
-      white-space: nowrap;
-    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { border: 1px solid #ddd; padding: 0.6rem 0.8rem; text-align: left; vertical-align: top; }
+    th { background: #f0f4f8; font-weight: bold; white-space: nowrap; }
     tr:nth-child(even) { background: #fafbfc; }
-
     .notice {
-      background: #fff3cd;
-      border-left: 4px solid #f0ad4e;
-      padding: 1rem 1.2rem;
-      margin: 1rem 0;
-      border-radius: 0 8px 8px 0;
-      font-size: 0.9rem;
+      background: #fff3cd; border-left: 4px solid #f0ad4e;
+      padding: 1rem 1.2rem; margin: 1rem 0; border-radius: 0 8px 8px 0; font-size: 0.9rem;
     }
-    .notice-red {
-      background: #f8d7da;
-      border-left: 4px solid #d9534f;
-    }
-    .notice-blue {
-      background: #d1ecf1;
-      border-left: 4px solid #4a90d9;
-    }
+    .notice-red { background: #f8d7da; border-left-color: #d9534f; }
+    .notice-blue { background: #d1ecf1; border-left-color: #4a90d9; }
     .notice strong { display: block; margin-bottom: 0.3rem; }
-
     ul { padding-left: 1.5rem; }
     ul li { margin-bottom: 0.3rem; }
-
-    .label-section {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-top: 1rem;
-    }
-    .label-item {
-      flex: 1;
-      min-width: 200px;
-      background: #f8f9fa;
-      border-radius: 8px;
-      padding: 1rem;
-      text-align: center;
-    }
-    .label-item h4 { margin-bottom: 0.5rem; color: #4a90d9; }
-    .label-item p { font-size: 0.85rem; }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      color: #999;
-      font-size: 0.8rem;
-    }
-
+    .school-keep { color: #888; font-size: 0.85em; }
+    footer { text-align: center; padding: 2rem; color: #999; font-size: 0.8rem; }
     @media (max-width: 600px) {
       table { font-size: 0.8rem; }
       th, td { padding: 0.4rem; }
@@ -123,27 +65,25 @@
 
 <div class="container">
 
-  <!-- 準備物 -->
+  <!-- ==================== 準備物 ==================== -->
   <div class="card">
     <div class="card-header blue">4月の準備物について</div>
     <div class="card-body">
       <div class="notice">
         <strong>※すべての持ち物に、記名をお願いします。</strong>
-        学校へ持ってくる日を確認して、忘れ物がないようにしましょう。
       </div>
+
       <table>
         <thead>
-          <tr><th>日付</th><th>持ち物・準備物</th></tr>
+          <tr><th>日付</th><th>準備物</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td>10日(金)<br><small>（始業式・13:00下校）</small></td>
+            <td>10日(金)<br><small>始業式<br>13:00下校</small></td>
             <td>
               <ul>
-                <li>上ぐつ</li>
-                <li>ぞうきん（2まい）</li>
-                <li>連絡帳</li>
-                <li>ビニール袋</li>
+                <li>体育館シューズ</li>
+                <li>シューズ袋</li>
               </ul>
             </td>
           </tr>
@@ -151,30 +91,9 @@
             <td>13日(月)</td>
             <td>
               <ul>
-                <li>スティックのり・はさみ・セロテープ</li>
-                <li>クレパス（16色）</li>
-                <li>色えんぴつ</li>
-                <li>ネームペン</li>
-                <li>さんすうボックス（計算カード含む）</li>
-                <li>自由帳</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td>14日(火)</td>
-            <td>
-              <ul>
-                <li>体操服</li>
-                <li>赤白帽</li>
-                <li>体育館シューズ</li>
-              </ul>
-            </td>
-          </tr>
-          <tr>
-            <td>15日(水)</td>
-            <td>
-              <ul>
-                <li>ふんわりボックス（お菓子の空き箱など）</li>
+                <li>お道具箱（スティックのり・はさみ・クレパス・セロハンテープ・色鉛筆）</li>
+                <li>たいそうふく（身体測定のため半袖・半ズボン）</li>
+                <li>さんすうボックス（ケースだけでなく、小さな物も一つ一つ記名）</li>
               </ul>
             </td>
           </tr>
@@ -182,8 +101,8 @@
             <td>17日(金)</td>
             <td>
               <ul>
-                <li>ロケットえんぴつ（1セット〜2こくらい）</li>
-                <li>パス（16色以上）</li>
+                <li>マッキー 8色（1本ずつ記名）</li>
+                <li>ねんど・ねんどケース・ねんどばん（ねんどべら）</li>
               </ul>
             </td>
           </tr>
@@ -191,8 +110,9 @@
             <td>23日(木)</td>
             <td>
               <ul>
-                <li>ロペボトル 2本（なまえ記入）</li>
-                <li>500mlペットボトル（キャップにあなをあけたもの）</li>
+                <li>ペットボトル 2本（ふたなし）</li>
+                <li>500ml の空のペットボトル（水やり用）</li>
+                <li>300ml（小さめ）の空のペットボトル（鉛筆削り用）</li>
               </ul>
             </td>
           </tr>
@@ -200,7 +120,7 @@
             <td>24日(金)</td>
             <td>
               <ul>
-                <li>ぞうきん（大きめのもの）</li>
+                <li>ぞうきん（大きめに記名）</li>
               </ul>
             </td>
           </tr>
@@ -208,287 +128,311 @@
             <td>27日(月)</td>
             <td>
               <ul>
-                <li>給食用ランチマット（この週は、4日分を巾着袋に入れて）</li>
-                <li>ランチマット入れ用 巾着袋</li>
-                <li>歯みがきセット（歯ブラシ・コップ・歯磨き粉を巾着 or 布巾に）</li>
+                <li>給食用ランチマット（この週は、4日分を巾着袋に入れて持ってくる）</li>
+                <li>ランチマット入れ用 小さな巾着袋</li>
+                <li>歯みがきセット（歯ブラシ・コップ・歯磨き粉は自由。巾着袋に入れて）</li>
                 <li>歯みがきセット用 小さな巾着袋</li>
               </ul>
             </td>
           </tr>
         </tbody>
       </table>
+
+      <h4 style="margin-top:1.5rem;">提出物（10日(金)提出 ／ 13日(月)締切厳守）</h4>
+      <ul>
+        <li>児童調査票</li>
+        <li>PTA学級役員希望調査用紙</li>
+        <li>緊急連絡用引き渡しカード</li>
+        <li>保健調査票（押印またはサイン）</li>
+        <li>心電図調査票・記録表</li>
+        <li>学校生活管理指導表（希望者のみ）</li>
+        <li>スポーツ振興センター加入同意書</li>
+      </ul>
     </div>
   </div>
 
-  <!-- 名前のしるしについて -->
+  <!-- ==================== 記名のしかた ==================== -->
   <div class="card">
-    <div class="card-header purple">名前のしるしについて</div>
+    <div class="card-header purple">記名のしかたについて</div>
     <div class="card-body">
-      <div class="notice notice-blue">
-        <strong>持ち物への記名のお願い</strong>
-        えんぴつ・おはじき・ボックスの中のおはじき等の小さなものへの記名もお願いします。
-      </div>
-      <div class="label-section">
-        <div class="label-item">
-          <h4>上ぐつ</h4>
-          <p>ラインは<strong>緑色</strong></p>
-          <p>つま先の部分と、かかとの部分に名前を記入</p>
-          <p><small>（横15cm × たて20cmくらい）</small></p>
-        </div>
-        <div class="label-item">
-          <h4>かさ</h4>
-          <p>記名は名前テープ等で<br>わかるようにしてください</p>
-        </div>
-      </div>
+      <ul>
+        <li><strong>学用品</strong>には、すべて記名（ひらがな）をしてください。<br>
+          <small>（鉛筆やクレパス、さんすうボックスのおはじきなど一つ一つに書いてください。）</small></li>
+        <li><strong>衣類</strong>にも記名をお願いします。<br>
+          <small>（くつ下も忘れずに書いてください。）</small></li>
+      </ul>
+      <table style="margin-top:1rem;">
+        <thead>
+          <tr><th>持ち物</th><th>記名のしかた</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>上ぐつ</td><td>2カ所に書く</td></tr>
+          <tr><td>体育館シューズ</td><td>2カ所に書く</td></tr>
+          <tr><td>体操服</td><td>ゼッケンを胸と背に縫いつける（縦15cm × 横20cmくらい）</td></tr>
+          <tr><td>傘</td><td>開けなくても分かるように</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
-  <!-- 学習予定1: 4/10〜13 -->
+  <!-- ==================== 学習予定1 ==================== -->
   <div class="card">
-    <div class="card-header green">学習予定 1（4月10日〜13日）</div>
+    <div class="card-header green">★ 学習予定 1（10日〜13日）</div>
     <div class="card-body">
       <div class="notice notice-blue">
         <strong>保護者の方へ</strong>
-        この学習予定のプリントは毎週配布し、持ち物などをお知らせします。特別な準備物などもありますので、かならず目をとおしてください。
+        この学習予定のプリントをご覧いただき、持ち物の準備などをお願いします。<br>
+        10日・13日・14日の3日間は下校指導をします。
       </div>
+
+      <h4>毎日持ってくるもの</h4>
+      <ul>
+        <li>ふでばこ・A4したじき・れんらくぶくろ・じゆうちょう</li>
+      </ul>
+      <div class="notice" style="margin-top:0.5rem;">
+        <strong>ふでばこの中身</strong>
+        鉛筆 4B（2B）を5本 ／ 赤鉛筆 1本 ／ 消しゴム ／ ミニじょうぎ
+      </div>
+
+      <h4 style="margin-top:1rem;">学校に置いておくもの</h4>
+      <ul>
+        <li>お道具箱（スティックのり・はさみ・クレパス・セロハンテープ・色鉛筆）<br>
+          <small class="school-keep">※家に持ち帰らずに学校にそのまま置いておきます</small></li>
+        <li>体育館シューズ → くつばこに入れます<br>
+          <small class="school-keep">※体育館シューズ入れは学校で預かります</small></li>
+        <li>せいかつのほん <span class="school-keep">（学校に置いておきます）</span></li>
+      </ul>
+
+      <h4 style="margin-top:1.5rem;">時間割</h4>
       <table>
         <thead>
-          <tr><th>日付</th><th>学習内容</th><th>持ち物（もってくるもの）</th></tr>
+          <tr><th>日付</th><th>①</th><th>②</th><th>③</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td>10(金)<br><small>始業式<br>13:00下校</small></td>
-            <td>①しんきゅうしき（始業式）<br><small>※入学式の準備のつごうにより、始業式後は13:00下校です</small></td>
-            <td>
-              <ul>
-                <li>ふでばこ・したじき</li>
-                <li>れんらくちょう</li>
-                <li>ランドセル（きょうかしょ入り）</li>
-                <li>フレンドノート（1さつ）</li>
-              </ul>
-            </td>
+            <td>10(金)<br><small>13:00下校</small></td>
+            <td>がっきゅうかつどう<br><small>あいさつとへんじ<br>よいしせい<br>ロッカー・くつばこ・トイレのつかいかた</small></td>
+            <td>がっきゅうしゃしん<br><small>※欠席の児童がいる場合は別の日</small></td>
+            <td>がっきゅうかつどう<br><small>どうろのあるきかた<br>かえりのしたく<br>しゅうだんげこうのしかた</small></td>
           </tr>
           <tr>
             <td>13(月)</td>
-            <td>
-              ①がっかつ<br>
-              ②こくご「なんていおうかな」<br>
-              ③さんすう「くらべよう」
-            </td>
-            <td>
-              <ul>
-                <li>さんすうボックス・けいさんカード</li>
-                <li>いろえんぴつ</li>
-                <li>フレンドノート・じゆうちょう</li>
-              </ul>
-            </td>
+            <td>せいかつ<br><small>「えんぴつのもちかた・せんのかきかた」</small></td>
+            <td>しょしゃ<br><small>「えんぴつとなかよし」</small></td>
+            <td>がっきゅうかつどう<br><small>しゅっせきじゅん</small></td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
 
-  <!-- 学習予定2: 4/14〜17 -->
+  <!-- ==================== 学習予定2 ==================== -->
   <div class="card">
-    <div class="card-header green">学習予定 2（4月14日〜17日）</div>
+    <div class="card-header green">★ 学習予定 2（14日〜17日）</div>
     <div class="card-body">
-      <table>
-        <thead>
-          <tr><th>日付</th><th>1時間目</th><th>2時間目</th><th>3時間目</th><th>もってくるもの</th></tr>
-        </thead>
+
+      <h4>この週に持ってきて学校に置いておくもの</h4>
+      <table style="margin-bottom:1.5rem;">
+        <thead><tr><th>日付</th><th>持ってくるもの</th><th>備考</th></tr></thead>
         <tbody>
           <tr>
-            <td>14(月)</td>
-            <td>がっかつ</td>
-            <td>こくご<br><small>「なんていおうかな」</small></td>
-            <td>さんすう<br><small>「10までのかず」</small></td>
-            <td>
-              <ul>
-                <li>はさみ・のり・セロテープ・くれぱす</li>
-                <li>れんらくちょう（まいにち）</li>
-              </ul>
-              <small>※たいそうふく一式は学校においておく</small>
-            </td>
+            <td>14(火)</td>
+            <td>たいそうふく（上下とも夏用）／ さんすうボックス（ひとつひとつ記名）／ たいいくかんシューズ</td>
+            <td class="school-keep">学校に置いておきます<br>※衣類に名前をかいてください</td>
           </tr>
           <tr>
-            <td>15(火)</td>
-            <td>たいいく</td>
-            <td>こくご<br><small>「どうぞよろしく」</small></td>
-            <td>さんすう<br><small>「10までのかず」</small></td>
-            <td>
-              <ul>
-                <li>たいいくぎ・あかしろぼうし</li>
-                <li>たいいくかんシューズ</li>
-              </ul>
-            </td>
+            <td>15(水)</td>
+            <td>たいそうふく・あかしろぼう ／ たいいくのほん</td>
+            <td class="school-keep">学校に置いておきます</td>
           </tr>
           <tr>
             <td>16(木)</td>
-            <td>こくご<br><small>「どうぞよろしく」</small></td>
-            <td>さんすう<br><small>「10までのかず」</small></td>
-            <td>おんがく<br><small>「うたってなかよし」</small></td>
-            <td>
-              <ul>
-                <li>こくごノート</li>
-              </ul>
-            </td>
+            <td>こくごのほん ／ こくごノート ／ どうとくのほん ／ おんがくのほん</td>
+            <td class="school-keep">学校に置いておきます</td>
           </tr>
           <tr>
             <td>17(金)</td>
-            <td>こくご</td>
-            <td>さんすう</td>
-            <td>ずこう<br><small>「すきなものいっぱい」</small></td>
-            <td>
-              <ul>
-                <li>ずこうのほん<br><small>（学校においてくるもの）</small></li>
-                <li>マッキー8色組</li>
-              </ul>
-            </td>
+            <td>さんすうのほん（2さつ）／ さんすうノート ／ ずこうのほん ／ マッキー8色組 ／ ねんど・ねんどばん（ねんどベラ）</td>
+            <td class="school-keep">学校に置いておきます</td>
           </tr>
         </tbody>
       </table>
-      <div class="notice" style="margin-top: 1rem;">
-        <strong>お知らせ</strong>
-        <ul>
-          <li>スティックのり・はさみ・セロテープなどは学校に置いておきます</li>
-          <li>洗濯等で体操服を持ち帰った場合は、次の体育の日までに持たせてください</li>
-        </ul>
-      </div>
+
+      <h4>時間割</h4>
+      <table>
+        <thead>
+          <tr><th>日付</th><th>①</th><th>②</th><th>③</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>14(火)</td>
+            <td colspan="2">①② しんたいそくてい（身体測定）<br><small>じこしょうかいかあどをかく</small></td>
+            <td>こくご<br><small>「はるがきた」<br>「おはなしききたいな」</small></td>
+          </tr>
+          <tr>
+            <td>15(水)</td>
+            <td>どうとく<br><small>「あいさつ」</small></td>
+            <td>たいいく</td>
+            <td>おんがく<br><small>「うたとなかよし」</small></td>
+          </tr>
+          <tr>
+            <td>16(木)</td>
+            <td>たいいく<br><small>「ゆうぐあそび」<br>ちょうかいのならびかた</small></td>
+            <td>こくご<br><small>「はじめてかくなまえ」</small></td>
+            <td>さんすう<br><small>「かずとすうじ」</small></td>
+          </tr>
+          <tr>
+            <td>17(金)</td>
+            <td>こくご<br><small>「どうぞよろしく」</small></td>
+            <td>さんすう<br><small>「かずとすうじ」</small></td>
+            <td>ずこう<br><small>「すきなものいっぱい」</small></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
-  <!-- 学習予定3: 4/20〜24 -->
+  <!-- ==================== 学習予定3 ==================== -->
   <div class="card">
-    <div class="card-header green">学習予定 3（4月20日〜24日）</div>
+    <div class="card-header green">★ 学習予定 3（20日〜24日）</div>
     <div class="card-body">
       <div class="notice notice-blue">
-        <strong>下校時刻について</strong>
-        下校はじかんわりのとおりです。金曜日は13:00下校です。
+        <strong>下校について</strong>
+        下校は、じかんわりのとおりの予定です。
       </div>
       <table>
         <thead>
-          <tr><th>日付</th><th>学習内容</th><th>持ち物など</th></tr>
+          <tr><th>日付</th><th>がくしゅうすること</th><th>じゅんびするもの</th></tr>
         </thead>
         <tbody>
           <tr>
             <td>20(月)</td>
-            <td>①がっこうたんけん<br>じかんわりのとおり<br>（3じかんめまで）</td>
+            <td>ちょうかい<br>さんすう「かずとすうじ」<br>がっきゅうかつどう<br><small>こうつうあんぜんについて<br>こうつうあんぜんきょうしつ</small></td>
             <td>
-              <ul>
-                <li>クレヨン</li>
-              </ul>
-              <small>※給食開始 13:00〜</small>
+              <ul><li>うわぐつ</li></ul>
             </td>
           </tr>
           <tr>
-            <td>21(火)</td>
-            <td>じかんわりのとおり<br>（3じかんめまで）</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>22(水)</td>
-            <td>じかんわりのとおり<br>（3じかんめまで）</td>
+            <td>21(火)<br><small>3じかんめまで</small></td>
+            <td>じかんわりのとおり</td>
             <td>
-              <ul>
-                <li>じかんわりどおりにもってくる</li>
-              </ul>
+              <ul><li>じかんわりをみてよういする</li></ul>
+              <small>＊個人懇談 13:00</small>
             </td>
           </tr>
           <tr>
-            <td>23(木)</td>
+            <td>22(水)<br><small>3じかんめまで</small></td>
+            <td>じかんわりのとおり</td>
+            <td>
+              <ul><li>じかんわりをみてよういする</li></ul>
+              <small>＊個人懇談 13:00</small>
+            </td>
+          </tr>
+          <tr>
+            <td>23(木)<br><small>3じかんめまで</small></td>
             <td>じかんわりのとおり</td>
             <td>
               <ul>
-                <li>じかんわりどおりにもってくる</li>
-                <li>しゅくだいしたもの・なまえペン</li>
+                <li>じかんわりをみてよういする</li>
+                <li>500ml の空のペットボトル（水やり用）</li>
+                <li>300ml（小さめ）の空のペットボトル（鉛筆削り用）</li>
               </ul>
+              <small>（しっかりしたものに、なまえをかいて）</small><br>
+              <small>＊個人懇談 13:00</small>
             </td>
           </tr>
           <tr>
-            <td>24(金)<br><small>13:00下校</small></td>
-            <td>じかんわりのとおり<br>（3じかんめまで）</td>
+            <td>24(金)<br><small>3じかんめまで</small></td>
+            <td>じかんわりのとおり</td>
             <td>
               <ul>
-                <li>ぞうきん（おおきなもの）</li>
+                <li>ぞうきん（おおきくなまえをかく）</li>
                 <li>しゅくだいプリント 1まい</li>
               </ul>
+              <small>＊個人懇談 13:00</small>
             </td>
           </tr>
         </tbody>
       </table>
 
-      <div class="notice" style="margin-top: 1.5rem;">
-        <strong>個人懇談について</strong>
-        4月20日(月)から、個人懇談を実施しています。日時は別途お知らせのとおりです。特別な事情がありましたらお知らせください。
+      <div class="notice" style="margin-top:1.5rem;">
+        <strong>○ 個人懇談について</strong>
+        個人懇談をさせていただきます。日時については、別紙にてお知らせします。特別な事情がない限りできるだけご協力をお願いします。どうしても都合がつかない場合は、お早めに都合のつく日時をお知らせください。<br>
+        <small>（本校に兄弟がいる場合、時間が重ならないように配慮します。）</small>
       </div>
       <div class="notice">
-        <strong>体育の授業について</strong>
-        時間割に体育がある場合は、体操服と赤白帽を持たせてください。体操服は、体調に合わせて、夏用・冬用どちらでも構いません。
+        <strong>○ 体育の授業について</strong>
+        時間割に体育がある場合は、体操服と赤白帽を持たせてください。<br>
+        体操服は、体調に合わせて、夏用・冬用どちらでも結構です。
       </div>
     </div>
   </div>
 
-  <!-- 学習予定4: 4/27〜5/1 -->
+  <!-- ==================== 学習予定4 ==================== -->
   <div class="card">
-    <div class="card-header green">学習予定 4（4月27日〜5月1日）</div>
+    <div class="card-header green">★ 学習予定 4（27日〜5/1日）</div>
     <div class="card-body">
       <table>
         <thead>
-          <tr><th>日付</th><th>学習内容</th><th>持ち物など</th></tr>
+          <tr><th>日付</th><th>がくしゅうすること</th><th>じゅんびするもの</th></tr>
         </thead>
         <tbody>
           <tr>
-            <td>27(月)</td>
-            <td>1ねんせいをむかえるかい<br>じかんわりのとおり<br>（5じかんめまで）</td>
+            <td>27(月)<br><small>3じかんめまで<br>じかんわりのとおり</small></td>
+            <td>きゅうしょくについて</td>
             <td>
               <ul>
-                <li>エプロン・マスク（給食用）</li>
-                <li>じゅんびプリント 2まい</li>
+                <li>うわぐつ</li>
+                <li>ランチマット 4まい<br><small>（27・28・30・1日の4日分）</small></li>
+                <li>エプロン・マスク・はみがきセット</li>
+                <li>しゅくだいプリント 2まい</li>
               </ul>
             </td>
           </tr>
           <tr>
-            <td>28(火)</td>
-            <td>じかんわりのとおり<br>（5じかんめまで）</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>29(水)</td>
-            <td>じかんわりのとおり<br>（5じかんめまで）</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>30(木)</td>
-            <td>じかんわりのとおり<br>（5じかんめまで）</td>
+            <td>28(火)<br><small>2じかんめから<br>じかんわりのとおり<br>（5じかんめまで）</small></td>
+            <td>1ねんせいをむかえるかい</td>
             <td>
               <ul>
-                <li>しゅくだいプリント</li>
+                <li>しゅくだいプリント 2まい</li>
+              </ul>
+            </td>
+          </tr>
+          <tr>
+            <td>30(木)<br><small>じかんわりのとおり<br>（5じかんめまで）</small></td>
+            <td>じかんわりのとおり</td>
+            <td>
+              <ul>
+                <li>しゅくだいプリント 2まい</li>
               </ul>
             </td>
           </tr>
           <tr>
             <td>5/1(金)</td>
-            <td>PTA参観授業・総会</td>
+            <td>PTA参観授業<br>総会</td>
             <td>
               <ul>
-                <li>しゅくだいプリント</li>
+                <li>しゅくだいプリント 2まい</li>
               </ul>
             </td>
           </tr>
         </tbody>
       </table>
+      <p style="margin-top:0.5rem; color:#888; font-size:0.85rem;">※4/29(水)は昭和の日のためお休みです</p>
 
-      <div class="notice notice-red" style="margin-top: 1.5rem;">
+      <div class="notice notice-red" style="margin-top:1.5rem;">
         <strong>重要なお知らせ</strong>
         <ul>
-          <li><strong>4月27日(月)より給食が始まります。</strong><br>
-            給食の日は、エプロン・マスク・予備のマスクを入れてください。下校時刻は14時30分頃です。</li>
-          <li><strong>5月1日(金) PTA授業参観・総会</strong><br>
-            5時間目（13時50分〜14時35分）の後、参観懇談となります。</li>
-          <li><strong>5時間授業の日の下校 → 15:00頃下校</strong><br>
-            天候や連絡等の事情により、下校時刻がずれることがあります。</li>
-          <li><strong>5月7日(木)から連絡帳を書き始めます。</strong><br>
-            連絡帳を見てお子さんに忘れ物がないようにしてあげてください。</li>
+          <li><strong>○ 4月27日(月)より給食が始まります。</strong><br>
+            給食袋には、エプロン・マスク・予備のマスクを入れておいてください。</li>
+          <li><strong>○ 5月1日(金)は、PTA授業参観日・総会です。</strong><br>
+            下校時刻は、14時50分頃です。<br>
+            5時間目（13時50分〜14時35分）が、参観授業になります。</li>
+          <li><strong>○ 5月1日(金)以降の下校時刻</strong><br>
+            5時間授業の日 → 15:00頃下校<br>
+            <small>（天候や諸般の事情により、下校時刻がずれることがあります。）</small></li>
+          <li><strong>○ 5月7日(木)から、連絡帳を書き始めます。</strong><br>
+            連絡帳を見てお子さんといっしょに準備をお願いします。</li>
         </ul>
       </div>
     </div>
