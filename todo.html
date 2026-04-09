@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To Doリスト - 杏ちゃんの佐古小ナビ</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .todo-input-area {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .todo-input-area input {
+      flex: 1;
+      padding: 0.7rem 1rem;
+      font-size: 1rem;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+    }
+    .todo-input-area input:focus {
+      border-color: #4a90d9;
+    }
+    .todo-input-area button {
+      padding: 0.7rem 1.2rem;
+      font-size: 1rem;
+      font-weight: bold;
+      color: #fff;
+      background: #4a90d9;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .todo-input-area button:hover {
+      background: #3a7bc8;
+    }
+    .todo-list {
+      list-style: none;
+      padding: 0;
+    }
+    .todo-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid #eee;
+    }
+    .todo-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      accent-color: #4a90d9;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .todo-item span {
+      flex: 1;
+      font-size: 1rem;
+    }
+    .todo-item.done span {
+      text-decoration: line-through;
+      color: #aaa;
+    }
+    .todo-delete {
+      background: none;
+      border: none;
+      color: #d9534f;
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 0 0.3rem;
+    }
+    .todo-delete:hover {
+      color: #c9302c;
+    }
+    .todo-empty {
+      text-align: center;
+      color: #aaa;
+      padding: 2rem;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>✅ To Doリスト</h1>
+</header>
+
+<div class="container">
+  <a href="index.html" class="back-link">← トップへ戻る</a>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="todo-input-area">
+        <input type="text" id="todoInput" placeholder="やることを入力...">
+        <button onclick="addTodo()">追加</button>
+      </div>
+      <ul class="todo-list" id="todoList"></ul>
+      <div class="todo-empty" id="todoEmpty">まだタスクがありません</div>
+    </div>
+  </div>
+
+  <a href="index.html" class="back-link" style="margin-bottom:2rem;">← トップへ戻る</a>
+</div>
+
+<script>
+const KEY = 'sako_todos';
+
+function loadTodos() {
+  return JSON.parse(localStorage.getItem(KEY) || '[]');
+}
+
+function saveTodos(todos) {
+  localStorage.setItem(KEY, JSON.stringify(todos));
+}
+
+function render() {
+  const todos = loadTodos();
+  const list = document.getElementById('todoList');
+  const empty = document.getElementById('todoEmpty');
+  list.innerHTML = '';
+  empty.style.display = todos.length ? 'none' : 'block';
+
+  todos.forEach((t, i) => {
+    const li = document.createElement('li');
+    li.className = 'todo-item' + (t.done ? ' done' : '');
+    li.innerHTML = `
+      <input type="checkbox" ${t.done ? 'checked' : ''} onchange="toggleTodo(${i})">
+      <span>${esc(t.text)}</span>
+      <button class="todo-delete" onclick="deleteTodo(${i})" title="削除">✕</button>
+    `;
+    list.appendChild(li);
+  });
+}
+
+function addTodo() {
+  const input = document.getElementById('todoInput');
+  const text = input.value.trim();
+  if (!text) return;
+  const todos = loadTodos();
+  todos.push({ text, done: false });
+  saveTodos(todos);
+  input.value = '';
+  render();
+}
+
+function toggleTodo(i) {
+  const todos = loadTodos();
+  todos[i].done = !todos[i].done;
+  saveTodos(todos);
+  render();
+}
+
+function deleteTodo(i) {
+  const todos = loadTodos();
+  todos.splice(i, 1);
+  saveTodos(todos);
+  render();
+}
+
+function esc(s) {
+  const d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+document.getElementById('todoInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') addTodo();
+});
+
+render();
+</script>
+</body>
+</html>

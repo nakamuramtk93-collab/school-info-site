@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>メモ帳 - 杏ちゃんの佐古小ナビ</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .memo-area {
+      width: 100%;
+      min-height: 400px;
+      padding: 1rem;
+      font-size: 1rem;
+      font-family: inherit;
+      line-height: 1.8;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+      resize: vertical;
+      background: #fff;
+    }
+    .memo-area:focus {
+      border-color: #4a90d9;
+    }
+    .memo-status {
+      text-align: right;
+      color: #aaa;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      min-height: 1.5em;
+    }
+    .memo-status.saved {
+      color: #5cb85c;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>📝 メモ帳</h1>
+</header>
+
+<div class="container">
+  <a href="index.html" class="back-link">← トップへ戻る</a>
+
+  <div class="card">
+    <div class="card-body">
+      <textarea class="memo-area" id="memoArea" placeholder="自由にメモを書き込めます..."></textarea>
+      <div class="memo-status" id="memoStatus"></div>
+    </div>
+  </div>
+
+  <a href="index.html" class="back-link" style="margin-bottom:2rem;">← トップへ戻る</a>
+</div>
+
+<script>
+const KEY = 'sako_memo';
+const area = document.getElementById('memoArea');
+const status = document.getElementById('memoStatus');
+let timer;
+
+area.value = localStorage.getItem(KEY) || '';
+
+area.addEventListener('input', () => {
+  clearTimeout(timer);
+  status.textContent = '';
+  status.className = 'memo-status';
+  timer = setTimeout(() => {
+    localStorage.setItem(KEY, area.value);
+    status.textContent = '保存しました';
+    status.className = 'memo-status saved';
+  }, 500);
+});
+</script>
+</body>
+</html>
