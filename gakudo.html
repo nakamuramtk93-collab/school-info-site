@@ -225,11 +225,9 @@ function onCheck(cb, location, direction, dk) {
 
   fetch(GAS_URL, {
     method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'text/plain' },
     body: JSON.stringify({ location, direction, datetime }),
-  }).then(r => r.json()).then(res => {
-    if (res.status === 'ok') {
-      // 送信成功（静かに完了）
-    }
   }).catch(() => {
     // オフライン等でもチェック自体は保存済み
   });
