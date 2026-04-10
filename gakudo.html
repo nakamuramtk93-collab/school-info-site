@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学童 - 杏ちゃんの佐古小ナビ</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .month-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .month-nav button {
+      background: #4a90d9;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .month-nav button:hover { background: #3a7bc8; }
+    .month-label {
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+    .day-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+      margin-bottom: 0.8rem;
+      overflow: hidden;
+    }
+    .day-card.holiday {
+      opacity: 0.5;
+    }
+    .day-header {
+      padding: 0.6rem 1rem;
+      font-weight: bold;
+      font-size: 1rem;
+      background: #f0f4f8;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .day-header .dow { color: #888; font-weight: normal; font-size: 0.9rem; }
+    .day-header .dow.sat { color: #4a90d9; }
+    .day-header .dow.sun { color: #d9534f; }
+    .day-header .holiday-label {
+      color: #d9534f;
+      font-size: 0.8rem;
+      margin-left: auto;
+    }
+    .day-body {
+      padding: 0.6rem 1rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .location-group {
+      flex: 1;
+      min-width: 140px;
+    }
+    .location-name {
+      font-weight: bold;
+      font-size: 0.85rem;
+      margin-bottom: 0.3rem;
+      color: #555;
+    }
+    .location-name.sako { color: #4a90d9; }
+    .location-name.tomo { color: #e67e22; }
+    .check-row {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.2rem;
+    }
+    .check-row input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .check-row input.sako { accent-color: #4a90d9; }
+    .check-row input.tomo { accent-color: #e67e22; }
+    .check-row label {
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+    .check-row input:checked + label {
+      text-decoration: line-through;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🏫 学童</h1>
+</header>
+
+<div class="container">
+  <a href="index.html" class="back-link">← トップへ戻る</a>
+
+  <div class="month-nav">
+    <button onclick="changeMonth(-1)">◀</button>
+    <span class="month-label" id="monthLabel"></span>
+    <button onclick="changeMonth(1)">▶</button>
+  </div>
+
+  <div id="calendar"></div>
+
+  <a href="index.html" class="back-link" style="margin-bottom:2rem;">← トップへ戻る</a>
+</div>
+
+<script>
+const DOW = ['日','月','火','水','木','金','土'];
+const HOLIDAYS_2026 = {
+  '2026-01-01':'元日','2026-01-12':'成人の日','2026-02-11':'建国記念の日',
+  '2026-02-23':'天皇誕生日','2026-03-20':'春分の日','2026-04-29':'昭和の日',
+  '2026-05-03':'憲法記念日','2026-05-04':'みどりの日','2026-05-05':'こどもの日',
+  '2026-05-06':'振替休日','2026-07-20':'海の日','2026-08-11':'山の日',
+  '2026-09-21':'敬老の日','2026-09-23':'秋分の日','2026-10-12':'スポーツの日',
+  '2026-11-03':'文化の日','2026-11-23':'勤労感謝の日'
+};
+
+let currentYear = 2026;
+let currentMonth = 4;
+
+function pad(n) { return String(n).padStart(2,'0'); }
+function dateKey(y,m,d) { return `${y}-${pad(m)}-${pad(d)}`; }
+function storageKey(y,m,d,loc,dir) { return `gakudo_${dateKey(y,m,d)}_${loc}_${dir}`; }
+
+function changeMonth(delta) {
+  currentMonth += delta;
+  if (currentMonth > 12) { currentMonth = 1; currentYear++; }
+  if (currentMonth < 1) { currentMonth = 12; currentYear--; }
+  renderCalendar();
+}
+
+function renderCalendar() {
+  document.getElementById('monthLabel').textContent = `${currentYear}年${currentMonth}月`;
+  const cal = document.getElementById('calendar');
+  cal.innerHTML = '';
+
+  const daysInMonth = new Date(currentYear, currentMonth, 0).getDate();
+
+  for (let d = 1; d <= daysInMonth; d++) {
+    const date = new Date(currentYear, currentMonth - 1, d);
+    const dow = date.getDay();
+    const dk = dateKey(currentYear, currentMonth, d);
+    const holiday = HOLIDAYS_2026[dk];
+    const isOff = dow === 0 || dow === 6 || !!holiday;
+
+    const card = document.createElement('div');
+    card.className = 'day-card' + (isOff ? ' holiday' : '');
+
+    const dowClass = dow === 0 ? 'sun' : dow === 6 ? 'sat' : '';
+
+    card.innerHTML = `
+      <div class="day-header">
+        <span>${currentMonth}/${d}</span>
+        <span class="dow ${dowClass}">(${DOW[dow]})</span>
+        ${holiday ? `<span class="holiday-label">${holiday}</span>` : ''}
+        ${dow === 0 || dow === 6 ? '<span class="holiday-label">休み</span>' : ''}
+      </div>
+      ${isOff ? '' : `
+      <div class="day-body">
+        <div class="location-group">
+          <div class="location-name sako">🏫 佐古小学童</div>
+          <div class="check-row">
+            <input type="checkbox" class="sako" id="s_ik_${dk}" onchange="save(this)">
+            <label for="s_ik_${dk}">→ 行き</label>
+          </div>
+          <div class="check-row">
+            <input type="checkbox" class="sako" id="s_kr_${dk}" onchange="save(this)">
+            <label for="s_kr_${dk}">← 帰り</label>
+          </div>
+        </div>
+        <div class="location-group">
+          <div class="location-name tomo">🧡 トモデココ</div>
+          <div class="check-row">
+            <input type="checkbox" class="tomo" id="t_ik_${dk}" onchange="save(this)">
+            <label for="t_ik_${dk}">→ 行き</label>
+          </div>
+          <div class="check-row">
+            <input type="checkbox" class="tomo" id="t_kr_${dk}" onchange="save(this)">
+            <label for="t_kr_${dk}">← 帰り</label>
+          </div>
+        </div>
+      </div>`}
+    `;
+    cal.appendChild(card);
+  }
+
+  // restore checked states
+  cal.querySelectorAll('input[type="checkbox"]').forEach(cb => {
+    cb.checked = localStorage.getItem(cb.id) === '1';
+  });
+}
+
+function save(cb) {
+  localStorage.setItem(cb.id, cb.checked ? '1' : '0');
+}
+
+renderCalendar();
+</script>
+</body>
+</html>
