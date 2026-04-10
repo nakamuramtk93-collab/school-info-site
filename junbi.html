@@ -151,13 +151,15 @@
   &copy; 2026 学校連絡事項サイト
 </footer>
 
+<script src="sync.js"></script>
 <script>
 document.querySelectorAll('.checklist input[type="checkbox"]').forEach(cb => {
   cb.checked = localStorage.getItem(cb.id) === '1';
   cb.addEventListener('change', () => {
-    localStorage.setItem(cb.id, cb.checked ? '1' : '0');
+    syncSave(cb.id, cb.checked ? '1' : '0');
   });
 });
+syncCheckboxes();
 </script>
 </body>
 </html>

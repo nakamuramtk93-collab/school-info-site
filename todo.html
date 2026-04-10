@@ -103,6 +103,7 @@
   <a href="index.html" class="back-link" style="margin-bottom:2rem;">← トップへ戻る</a>
 </div>
 
+<script src="sync.js"></script>
 <script>
 const KEY = 'sako_todos';
 
@@ -111,7 +112,9 @@ function loadTodos() {
 }
 
 function saveTodos(todos) {
-  localStorage.setItem(KEY, JSON.stringify(todos));
+  const json = JSON.stringify(todos);
+  localStorage.setItem(KEY, json);
+  syncSave(KEY, json);
 }
 
 function render() {
@@ -168,7 +171,13 @@ document.getElementById('todoInput').addEventListener('keydown', e => {
   if (e.key === 'Enter') addTodo();
 });
 
-render();
+// 共有データから読み込み
+syncLoad().then(data => {
+  if (data && data[KEY]) {
+    localStorage.setItem(KEY, data[KEY]);
+  }
+  render();
+});
 </script>
 </body>
 </html>
