@@ -1,5 +1,5 @@
 // 共有ストレージ同期（Google Apps Script経由）
-const GAS_URL = 'https://script.google.com/macros/s/AKfycbxusEsByV41Jbdp_jyNz_m6JH87epaf8lodxOjX8DmEhN_wEW6gd_NfxkmH3dXhaPhm_Q/exec';
+const GAS_URL = 'https://script.google.com/macros/s/AKfycbxIsNBqwNjYhR5SkX0DbvM8iac6r3l_y8ogxU4hYaJBMXA8wAiR9E77jLv1aSIolvRHFg/exec';
 
 // 全データを読み込み
 async function syncLoad() {
