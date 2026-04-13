@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>学童 - 杏ちゃんの佐古小ナビ</title>
+  <title>通知 - 杏ちゃんの佐古小ナビ</title>
   <link rel="stylesheet" href="style.css">
   <style>
     .month-nav {
@@ -100,7 +100,7 @@
 <body>
 
 <header>
-  <h1>🏫 学童</h1>
+  <h1>📩 通知</h1>
 </header>
 
 <div class="container">
@@ -171,6 +171,17 @@ function renderCalendar() {
       </div>
       ${isOff ? '' : `
       <div class="day-body">
+        <div class="location-group">
+          <div class="location-name sako">🏫 佐古小</div>
+          <div class="check-row">
+            <input type="checkbox" class="sako" id="sc_ik_${dk}" onchange="onCheck(this,'佐古小','行き','${dk}')">
+            <label for="sc_ik_${dk}">→ 行き</label>
+          </div>
+          <div class="check-row">
+            <input type="checkbox" class="sako" id="sc_kr_${dk}" onchange="onCheck(this,'佐古小','帰り','${dk}')">
+            <label for="sc_kr_${dk}">← 帰り</label>
+          </div>
+        </div>
         <div class="location-group">
           <div class="location-name sako">🏫 佐古小学童</div>
           <div class="check-row">
