@@ -78,6 +78,30 @@
       padding: 2rem;
       font-size: 0.95rem;
     }
+    .todo-user-area {
+      margin-bottom: 0.8rem;
+    }
+    .todo-user-area label {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #555;
+      margin-right: 0.5rem;
+    }
+    .todo-user-area select {
+      padding: 0.5rem 0.8rem;
+      font-size: 1rem;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+    }
+    .todo-user-area select:focus {
+      border-color: #4a90d9;
+    }
+    .todo-added-by {
+      font-size: 0.8rem;
+      color: #888;
+      margin-left: 0.3rem;
+    }
   </style>
 </head>
 <body>
@@ -91,6 +115,13 @@
 
   <div class="card">
     <div class="card-body">
+      <div class="todo-user-area">
+        <label>入力者：</label>
+        <select id="todoUser">
+          <option value="元気">元気</option>
+          <option value="美穂">美穂</option>
+        </select>
+      </div>
       <div class="todo-input-area">
         <input type="text" id="todoInput" placeholder="やることを入力...">
         <button onclick="addTodo()">追加</button>
@@ -129,7 +160,7 @@ function render() {
     li.className = 'todo-item' + (t.done ? ' done' : '');
     li.innerHTML = `
       <input type="checkbox" ${t.done ? 'checked' : ''} onchange="toggleTodo(${i})">
-      <span>${esc(t.text)}</span>
+      <span>${esc(t.text)}${t.addedBy ? '<span class="todo-added-by">（' + esc(t.addedBy) + '）</span>' : ''}</span>
       <button class="todo-delete" onclick="deleteTodo(${i})" title="削除">✕</button>
     `;
     list.appendChild(li);
@@ -140,11 +171,19 @@ function addTodo() {
   const input = document.getElementById('todoInput');
   const text = input.value.trim();
   if (!text) return;
+  const addedBy = document.getElementById('todoUser').value;
   const todos = loadTodos();
-  todos.push({ text, done: false });
+  todos.push({ text, done: false, addedBy });
   saveTodos(todos);
   input.value = '';
   render();
+
+  // メール通知を送信
+  const DOW = ['日','月','火','水','木','金','土'];
+  const now = new Date();
+  const dow = DOW[now.getDay()];
+  const datetime = `${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日(${dow}) ${now.getHours()}時${String(now.getMinutes()).padStart(2,'0')}分`;
+  syncTodoEmail(text, addedBy, datetime);
 }
 
 function toggleTodo(i) {

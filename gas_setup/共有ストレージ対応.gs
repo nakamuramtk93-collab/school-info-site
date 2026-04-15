@@ -17,6 +17,9 @@ function doGet(e) {
     sendNotification(e.parameter);
     props.setProperty(e.parameter.key, '1');
     return jsonResponse({ status: 'ok' });
+  } else if (action === 'todoEmail') {
+    sendTodoNotification(e.parameter);
+    return jsonResponse({ status: 'ok' });
   }
   return jsonResponse({ status: 'ok' });
 }
@@ -45,6 +48,19 @@ function sendNotification(p) {
     subject = '【学童】杏ちゃんお迎え完了';
     body = p.datetime + '、' + p.location + 'に杏ちゃんをお迎えしました。';
   }
+  MailApp.sendEmail({
+    to: 'nakamuramtk93@gmail.com,mixxxho@gmail.com',
+    subject: subject,
+    body: body,
+  });
+}
+
+function sendTodoNotification(p) {
+  var subject = '【To Do】新しいタスクが追加されました';
+  var body = p.addedBy + 'さんが新しいTo Doを追加しました。\n\n'
+    + '■ タスク内容：' + p.todoText + '\n'
+    + '■ 追加日時：' + p.datetime + '\n'
+    + '■ 追加者：' + p.addedBy;
   MailApp.sendEmail({
     to: 'nakamuramtk93@gmail.com,mixxxho@gmail.com',
     subject: subject,
