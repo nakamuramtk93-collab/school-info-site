@@ -206,8 +206,12 @@ function esc(s) {
   return d.innerHTML;
 }
 
-document.getElementById('todoInput').addEventListener('keydown', e => {
-  if (e.key === 'Enter' && !e.isComposing) addTodo();
+let composing = false;
+const todoInputEl = document.getElementById('todoInput');
+todoInputEl.addEventListener('compositionstart', () => { composing = true; });
+todoInputEl.addEventListener('compositionend', () => { composing = false; });
+todoInputEl.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !composing) addTodo();
 });
 
 // 共有データから読み込み
