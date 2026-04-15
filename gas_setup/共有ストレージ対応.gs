@@ -59,6 +59,7 @@ function sendTodoNotification(p) {
   var subject = '【To Do】新しいタスクが追加されました';
   var body = p.addedBy + 'さんが新しいTo Doを追加しました。\n\n'
     + '■ タスク内容：' + p.todoText + '\n'
+    + (p.deadline ? '■ 期限：' + formatDateJP(p.deadline) + '\n' : '')
     + '■ 追加日時：' + p.datetime + '\n'
     + '■ 追加者：' + p.addedBy;
   MailApp.sendEmail({
@@ -66,6 +67,84 @@ function sendTodoNotification(p) {
     subject: subject,
     body: body,
   });
+}
+
+// 日付を日本語形式にフォーマット (2026-04-20 → 4月20日)
+function formatDateJP(dateStr) {
+  var parts = dateStr.split('-');
+  return parseInt(parts[1]) + '月' + parseInt(parts[2]) + '日';
+}
+
+// 毎朝7:00にリマインド通知（前日・当日のTo Doを通知）
+// GASのトリガーで毎日7:00に実行するよう設定してください
+function checkTodoReminders() {
+  var props = PropertiesService.getScriptProperties();
+  var todosJson = props.getProperty('sako_todos');
+  if (!todosJson) return;
+
+  var todos = JSON.parse(todosJson);
+  var today = new Date();
+  var todayStr = Utilities.formatDate(today, 'Asia/Tokyo', 'yyyy-MM-dd');
+  var tomorrow = new Date(today.getTime() + 24 * 60 * 60 * 1000);
+  var tomorrowStr = Utilities.formatDate(tomorrow, 'Asia/Tokyo', 'yyyy-MM-dd');
+
+  var todayTasks = [];
+  var tomorrowTasks = [];
+
+  for (var i = 0; i < todos.length; i++) {
+    var t = todos[i];
+    if (t.done || !t.deadline) continue;
+    if (t.deadline === todayStr) {
+      todayTasks.push(t);
+    } else if (t.deadline === tomorrowStr) {
+      tomorrowTasks.push(t);
+    }
+  }
+
+  if (todayTasks.length === 0 && tomorrowTasks.length === 0) return;
+
+  var subject = '【To Do リマインド】期限が近いタスクがあります';
+  var body = '';
+
+  if (todayTasks.length > 0) {
+    body += '＜本日が期限のタスク＞\n';
+    for (var j = 0; j < todayTasks.length; j++) {
+      body += '  ・' + todayTasks[j].text + '（追加者：' + (todayTasks[j].addedBy || '不明') + '）\n';
+    }
+    body += '\n';
+  }
+
+  if (tomorrowTasks.length > 0) {
+    body += '＜明日が期限のタスク＞\n';
+    for (var k = 0; k < tomorrowTasks.length; k++) {
+      body += '  ・' + tomorrowTasks[k].text + '（追加者：' + (tomorrowTasks[k].addedBy || '不明') + '）\n';
+    }
+  }
+
+  MailApp.sendEmail({
+    to: 'nakamuramtk93@gmail.com,mixxxho@gmail.com',
+    subject: subject,
+    body: body,
+  });
+}
+
+// トリガー自動設定（1回だけ実行してください）
+function setupDailyTrigger() {
+  // 既存のcheckTodoRemindersトリガーを削除
+  var triggers = ScriptApp.getProjectTriggers();
+  for (var i = 0; i < triggers.length; i++) {
+    if (triggers[i].getHandlerFunction() === 'checkTodoReminders') {
+      ScriptApp.deleteTrigger(triggers[i]);
+    }
+  }
+  // 毎日AM7:00に実行するトリガーを作成
+  ScriptApp.newTrigger('checkTodoReminders')
+    .timeBased()
+    .everyDays(1)
+    .atHour(7)
+    .nearMinute(0)
+    .inTimezone('Asia/Tokyo')
+    .create();
 }
 
 function jsonResponse(obj) {

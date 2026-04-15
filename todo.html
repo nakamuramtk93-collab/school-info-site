@@ -102,6 +102,38 @@
       color: #888;
       margin-left: 0.3rem;
     }
+    .todo-deadline {
+      font-size: 0.8rem;
+      color: #e67e22;
+      margin-left: 0.3rem;
+      white-space: nowrap;
+    }
+    .todo-deadline.overdue {
+      color: #d9534f;
+      font-weight: bold;
+    }
+    .todo-deadline.today {
+      color: #d9534f;
+    }
+    .todo-date-area {
+      margin-bottom: 0.8rem;
+    }
+    .todo-date-area label {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #555;
+      margin-right: 0.5rem;
+    }
+    .todo-date-area input[type="date"] {
+      padding: 0.5rem 0.8rem;
+      font-size: 1rem;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+    }
+    .todo-date-area input[type="date"]:focus {
+      border-color: #4a90d9;
+    }
   </style>
 </head>
 <body>
@@ -121,6 +153,10 @@
           <option value="元気">元気</option>
           <option value="美穂">美穂</option>
         </select>
+      </div>
+      <div class="todo-date-area">
+        <label>期限：</label>
+        <input type="date" id="todoDeadline">
       </div>
       <div class="todo-input-area">
         <input type="text" id="todoInput" placeholder="やることを入力...">
@@ -160,11 +196,25 @@ function render() {
     li.className = 'todo-item' + (t.done ? ' done' : '');
     li.innerHTML = `
       <input type="checkbox" ${t.done ? 'checked' : ''} onchange="toggleTodo(${i})">
-      <span>${esc(t.text)}${t.addedBy ? '<span class="todo-added-by">（' + esc(t.addedBy) + '）</span>' : ''}</span>
+      <span>${esc(t.text)}${t.deadline ? '<span class="todo-deadline ' + deadlineClass(t.deadline) + '">📅' + formatDeadline(t.deadline) + '</span>' : ''}${t.addedBy ? '<span class="todo-added-by">（' + esc(t.addedBy) + '）</span>' : ''}</span>
       <button class="todo-delete" onclick="deleteTodo(${i})" title="削除">✕</button>
     `;
     list.appendChild(li);
   });
+}
+
+function formatDeadline(d) {
+  const parts = d.split('-');
+  return parseInt(parts[1]) + '/' + parseInt(parts[2]);
+}
+
+function deadlineClass(d) {
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  const dl = new Date(d + 'T00:00:00');
+  if (dl.getTime() === today.getTime()) return 'today';
+  if (dl < today) return 'overdue';
+  return '';
 }
 
 function addTodo() {
@@ -172,10 +222,12 @@ function addTodo() {
   const text = input.value.trim();
   if (!text) return;
   const addedBy = document.getElementById('todoUser').value;
+  const deadline = document.getElementById('todoDeadline').value || '';
   const todos = loadTodos();
-  todos.push({ text, done: false, addedBy });
+  todos.push({ text, done: false, addedBy, deadline });
   saveTodos(todos);
   input.value = '';
+  document.getElementById('todoDeadline').value = '';
   render();
 
   // メール通知を送信
@@ -183,7 +235,7 @@ function addTodo() {
   const now = new Date();
   const dow = DOW[now.getDay()];
   const datetime = `${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日(${dow}) ${now.getHours()}時${String(now.getMinutes()).padStart(2,'0')}分`;
-  syncTodoEmail(text, addedBy, datetime);
+  syncTodoEmail(text, addedBy, datetime, deadline);
 }
 
 function toggleTodo(i) {

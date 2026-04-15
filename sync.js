@@ -37,11 +37,12 @@ function syncEmail(location, direction, datetime, key) {
 }
 
 // To Do追加メール通知を送信
-function syncTodoEmail(todoText, addedBy, datetime) {
+function syncTodoEmail(todoText, addedBy, datetime, deadline) {
   const url = GAS_URL + '?action=todoEmail'
     + '&todoText=' + encodeURIComponent(todoText)
     + '&addedBy=' + encodeURIComponent(addedBy)
-    + '&datetime=' + encodeURIComponent(datetime);
+    + '&datetime=' + encodeURIComponent(datetime)
+    + '&deadline=' + encodeURIComponent(deadline || '');
   fetch(url).catch(() => {});
 }
 
