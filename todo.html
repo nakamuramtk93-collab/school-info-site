@@ -207,7 +207,7 @@ function esc(s) {
 }
 
 document.getElementById('todoInput').addEventListener('keydown', e => {
-  if (e.key === 'Enter') addTodo();
+  if (e.key === 'Enter' && !e.isComposing) addTodo();
 });
 
 // 共有データから読み込み
