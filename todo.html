@@ -196,7 +196,7 @@ function render() {
     li.className = 'todo-item' + (t.done ? ' done' : '');
     li.innerHTML = `
       <input type="checkbox" ${t.done ? 'checked' : ''} onchange="toggleTodo(${i})">
-      <span>${esc(t.text)}${t.deadline ? '<span class="todo-deadline ' + deadlineClass(t.deadline) + '">📅' + formatDeadline(t.deadline) + '</span>' : ''}${t.addedBy ? '<span class="todo-added-by">（' + esc(t.addedBy) + '）</span>' : ''}</span>
+      <span>${t.deadline ? '<span class="todo-deadline ' + deadlineClass(t.deadline) + '">📅' + formatDeadline(t.deadline) + '</span> ' : ''}${esc(t.text)}${t.addedBy ? '<span class="todo-added-by">（' + esc(t.addedBy) + '）</span>' : ''}</span>
       <button class="todo-delete" onclick="deleteTodo(${i})" title="削除">✕</button>
     `;
     list.appendChild(li);
