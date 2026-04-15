@@ -243,6 +243,14 @@ function toggleTodo(i) {
   todos[i].done = !todos[i].done;
   saveTodos(todos);
   render();
+
+  if (todos[i].done) {
+    const DOW = ['日','月','火','水','木','金','土'];
+    const now = new Date();
+    const dow = DOW[now.getDay()];
+    const datetime = `${now.getFullYear()}年${now.getMonth()+1}月${now.getDate()}日(${dow}) ${now.getHours()}時${String(now.getMinutes()).padStart(2,'0')}分`;
+    syncTodoDoneEmail(todos[i].text, todos[i].addedBy || '', datetime);
+  }
 }
 
 function deleteTodo(i) {

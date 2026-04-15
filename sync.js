@@ -46,6 +46,15 @@ function syncTodoEmail(todoText, addedBy, datetime, deadline) {
   fetch(url).catch(() => {});
 }
 
+// To Do完了メール通知を送信
+function syncTodoDoneEmail(todoText, addedBy, datetime) {
+  const url = GAS_URL + '?action=todoDoneEmail'
+    + '&todoText=' + encodeURIComponent(todoText)
+    + '&addedBy=' + encodeURIComponent(addedBy)
+    + '&datetime=' + encodeURIComponent(datetime);
+  fetch(url).catch(() => {});
+}
+
 // チェックボックスを共有データで初期化
 function syncCheckboxes() {
   syncLoad().then(data => {
