@@ -2,7 +2,7 @@
   "name": "杏ちゃんの佐古小ナビ",
   "short_name": "佐古小ナビ",
   "description": "佐古小学校の情報をまとめたナビアプリ",
-  "start_url": "/index.html",
+  "start_url": "/school-info-site/index.html",
   "display": "standalone",
   "background_color": "#4a90d9",
   "theme_color": "#4a90d9",
