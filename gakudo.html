@@ -154,8 +154,9 @@ const HOLIDAYS_2026 = {
   '2026-11-03':'文化の日','2026-11-23':'勤労感謝の日'
 };
 
-let currentYear = 2026;
-let currentMonth = 4;
+const _today = new Date();
+let currentYear = _today.getFullYear();
+let currentMonth = _today.getMonth() + 1;
 
 function pad(n) { return String(n).padStart(2,'0'); }
 function dateKey(y,m,d) { return `${y}-${pad(m)}-${pad(d)}`; }
@@ -183,6 +184,7 @@ function renderCalendar() {
     const isOff = dow === 0 || dow === 6 || !!holiday;
 
     const card = document.createElement('div');
+    card.id = 'day-' + dk;
     card.className = 'day-card' + (isOff ? ' holiday' : '');
 
     const dowClass = dow === 0 ? 'sun' : dow === 6 ? 'sat' : '';
@@ -256,6 +258,15 @@ function onCheck(cb, location, direction, dk) {
 }
 
 renderCalendar();
+
+// 当日の行にスクロール
+(function scrollToToday() {
+  const todayKey = dateKey(_today.getFullYear(), _today.getMonth() + 1, _today.getDate());
+  const todayCard = document.getElementById('day-' + todayKey);
+  if (todayCard) {
+    setTimeout(() => todayCard.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+  }
+})();
 
 // 共有データを読み込んでチェック状態を反映
 syncLoad().then(data => {
